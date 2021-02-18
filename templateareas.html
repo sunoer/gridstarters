@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Css Grid</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas: "header""sidebar""main""footer";
+            grid-template-rows: 1fr 2fr 1fr;
+            grid-gap: 5px;
+            height: 100vh;
+
+        }
+
+        .item {}
+
+        .item-a {
+            grid-area: header;
+            background-color: burlywood;
+        }
+
+        .item-b {
+            grid-area: sidebar;
+            background-color: beige;
+        }
+
+        .item-c {
+            grid-area: main;
+            background-color: bisque;
+        }
+
+        .item-d {
+            grid-area: footer;
+            background-color: burlywood;
+
+        }
+
+        @media screen and (min-width:768px) {
+            .container {
+                grid-template-areas:
+                    "header header"
+                    "sidebar main"
+                    "footer footer";
+            }
+
+            @media screen and (min-width:1000px) {
+                .container {
+                    grid-template-areas:
+                        "header header header header"
+                        "sidebar main main main"
+                        "footer footer footer footer";
+                }
+            }
+    </style>
+
+</head>
+
+<body>
+    <main class="container">
+        <div class="item item-a">A</div>
+        <div class="item item-b">B</div>
+        <div class="item item-c">C</div>
+        <div class="item item-d">D</div>
+    </main>
+
+</body></html>
+
+
+// Noter fra Jan ----------->
+
+Mobile: /* Først defineres grid i mobile-first, hvor der angives template-areas med navne (ikke relateret til deres faktisk navne i HTML!) og de lægges på samme linje. Når de vises på mobile, vil de derfor blot ligge i række efter hinanden. I ROWS er angivet hvor meget de skal fylde, således at "header" fylder 1fr, "sidebar"+"main" fylder 2fr og "footer" fylder 1fr.*/
+
+@media screen and (min-width:768px): /*På tablet versionen er grid defineret ved at de fortsat er angivet med navne, men nu er de blevet lagt i på flere linjer, så de ikke bare kommer i en række efter hinanden, men nu vil ligge side om side som de er angivet med deres ""-navne. Nu har vi angivet at der skal være 2 colums i stedet for 1 som i mobile, ved at gentage eller sidestille ""-navnene i samme "". Fx er "header" nu angivet til at fylde 2 colums og under "header" har vi sidestillet "sidebar" og "main" ved at samle dem i samme "". De vil derfor fylde lige meget på siden, mens "header" + "footer" vil fylde hele sidens bredde. Gap og heigt er fortsat uændret fra Mobile, men har til denne webside opgave udkommenteret ROWS og i stedet brugt ""-navne til at angive der skal være 3 ROWS på tablet*/
+
+@media screen and (min-width:1000px): /*På samme måde som i tablet version, her er der blot angivet 3 COLUMS i stedet for 2. Gap og heigt er fortsat uændret fra Mobile, men har til denne webside opgave udkommenteret ROWS og i stedet brugt ""-navne til at angive der skal være 4 ROWS*/
